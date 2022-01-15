@@ -24,11 +24,11 @@ const AddBudgetModal = (props) => {
           <Modal.Title>New Budget</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Group className="mb-3" contorlId="name">
+          <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" ref={nameRef} required />
           </Form.Group>
-          <Form.Group className="mb-3" contorlId="max">
+          <Form.Group className="mb-3" controlId="max">
             <Form.Label>Maximum Spending</Form.Label>
             <Form.Control
               type="number"

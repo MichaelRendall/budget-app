@@ -27,24 +27,36 @@ const BudgetCard = (props) => {
           <div className="me-2">{props.name}</div>
           <div className="d-flex align-items-baseline">
             {currencyFormatter.format(props.amount)}
-            <span className="text-muted fs-6 ms-1">
-              / {currencyFormatter.format(props.max)}
-            </span>
+            {props.max && (
+              <span className="text-muted fs-6 ms-1">
+                / {currencyFormatter.format(props.max)}
+              </span>
+            )}
           </div>
         </Card.Title>
-        <ProgressBar
-          className="rounded-pill"
-          variant={getProgressBarVariant(props.amount, props.max)}
-          min={0}
-          max={props.max}
-          now={props.amount}
-        />
-        <Stack direction="horizontal" gap="2" className="mt-4">
-          <Button variant="outline-primary" className="ms-auto">
-            Add Expense
-          </Button>
-          <Button variant="outline-secondary">View Expenses</Button>
-        </Stack>
+        {props.max && (
+          <ProgressBar
+            className="rounded-pill"
+            variant={getProgressBarVariant(props.amount, props.max)}
+            min={0}
+            max={props.max}
+            now={props.amount}
+          />
+        )}
+        {!props.hideButtons && (
+          <Stack direction="horizontal" gap="2" className="mt-4">
+            <Button
+              variant="outline-primary"
+              className="ms-auto"
+              onClick={props.onAddExpenseClick}
+            >
+              Add Expense
+            </Button>
+            <Button variant="outline-secondary" onClick={props.onViewExpensesClick}>
+              View Expenses
+            </Button>
+          </Stack>
+        )}
       </Card.Body>
     </Card>
   );
